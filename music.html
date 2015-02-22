@@ -91,9 +91,9 @@
     </script>
 
     <div class="search">
-    <input type="text" id="queryinput" />
-    <input type="submit" value="Search" 
-    onclick="javascript:SearchYouTube(document.getElementById('queryinput').value)" />
+    <input type="text" id="queryinput" placeholder="Enter your search" onkeyup="javascript:SearchYouTube(document.getElementById('queryinput').value)" />
+    <!--<input type="submit" value="Search" 
+    onclick="javascript:SearchYouTube(document.getElementById('queryinput').value)" />-->
     <div id="search-results-block"></div>
     </div>
 
