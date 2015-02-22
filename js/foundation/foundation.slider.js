@@ -1,28 +1,26 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
-  Foundation.libs.slider = {
+	Foundation.libs.slider = {
     name : 'slider',
 
     version : '5.5.1',
-
-    settings : {
+            settings : {
       start : 0,
       end : 100,
       step : 1,
       precision : null,
-      initial : null,
+					initial : null,
       display_selector : '',
       vertical : false,
       trigger_input_change : false,
       on_change : function () {}
-    },
-
-    cache : {},
+				},
+        cache : {},
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
-      this.bindings(method, options);
+ this.bindings(method, options);
       this.reflow();
     },
 
@@ -37,7 +35,7 @@
             e.preventDefault();
             self.set_active_slider($(e.target));
           }
-        })
+ })
         .on('mousemove.fndtn.slider touchmove.fndtn.slider pointermove.fndtn.slider', function (e) {
           if (!!self.cache.active) {
             e.preventDefault();
@@ -59,7 +57,7 @@
           self.settings.on_change();
         });
 
-      self.S(window)
+	self.S(window)
         .on('resize.fndtn.slider', self.throttle(function (e) {
           self.reflow();
         }, 300));
@@ -92,7 +90,7 @@
     },
 
     calculate_position : function ($handle, cursor_x) {
-      var self = this,
+	var self = this,
           settings = $.data($handle[0], 'settings'),
           handle_l = $.data($handle[0], 'handle_l'),
           handle_o = $.data($handle[0], 'handle_o'),
@@ -102,7 +100,7 @@
       requestAnimationFrame(function () {
         var pct;
 
-        if (Foundation.rtl && !settings.vertical) {
+if (Foundation.rtl && !settings.vertical) {
           pct = self.limit_to(((bar_o + bar_l - cursor_x) / bar_l), 0, 1);
         } else {
           pct = self.limit_to(((cursor_x - bar_o) / bar_l), 0, 1);
@@ -138,6 +136,7 @@
       } else {
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
+      }
 
       $handle_parent.attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
 
@@ -152,7 +151,7 @@
           'aria-valuemax' : settings.end
         });
       }
-      $handle.attr('aria-valuenow', value);
+ //      $handle.attr('aria-valuenow', value);
 
       if (settings.display_selector != '') {
         $(settings.display_selector).each(function () {
@@ -183,7 +182,7 @@
       if (vertical) {
         $(ele)
           .css('-webkit-transform', 'translateY(' + offset + 'px)')
-          .css('-moz-transform', 'translateY(' + offset + 'px)')
+     .css('-moz-transform', 'translateY(' + offset + 'px)')
           .css('-ms-transform', 'translateY(' + offset + 'px)')
           .css('-o-transform', 'translateY(' + offset + 'px)')
           .css('transform', 'translateY(' + offset + 'px)');
@@ -195,12 +194,12 @@
           .css('-o-transform', 'translateX(' + offset + 'px)')
           .css('transform', 'translateX(' + offset + 'px)');
       }
-    },
+			},
 
     limit_to : function (val, min, max) {
       return Math.min(Math.max(val, min), max);
     },
-
+  //   
     initialize_settings : function (handle) {
       var settings = $.extend({}, this.settings, this.data_options($(handle).parent())),
           decimal_places_match_result;
@@ -236,7 +235,7 @@
     set_value : function (value) {
       var self = this;
       $('[' + self.attr_name() + ']', this.scope).each(function () {
-        $(this).attr(self.attr_name(), value);
+			$(this).attr(self.attr_name(), value);
       });
       if (!!$(this.scope).attr(self.attr_name())) {
         $(this.scope).attr(self.attr_name(), value);
