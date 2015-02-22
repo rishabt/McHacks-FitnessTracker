@@ -2,6 +2,17 @@
     color: #ff4b0d
 }
 
+.numbers {
+    padding-left: 500px;
+    padding-top: 100px;
+    width: 800px; }
+
+.search {
+    padding-left: 100px;
+    padding-top: 100px;
+    width: 800px;
+}
+
 .blue {
     color: #0072c6
 }
