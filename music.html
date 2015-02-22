@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Social | Welcome</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/foundation.min.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/placeholder.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/foundation/foundation.topbar.js"></script>
+    <script>$(document).foundation();</script>
+    <script src="js/moment.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/amplify.js"></script>
+    <script src="js/MobileServices.Web-1.2.2.min.js"></script>
+    <style type="text/css">
+
+    .bg{
+    	max-width: 100%;
+    	height: auto;
+    	width: auto\9; /* ie8 */
+    }
+
+    </style>
+  </head>
+
+  <body>
+
+    <div class="fixed">
+    <div class="inner-wrap">
+    <nav class="tab-bar df-tab-bar hide-for-large-upx stickyx">
+        <section class="left tab-bar-section">
+            <h1 class="title">
+                <span class="orangex ng-binding">Social Music</span> <span class="dim ng-binding"></span>
+            </h1>
+        </section>
+        <section class="right-small"><a class="right-off-canvas-toggle menu-icon" href=""><span></span></a></section>
+    </nav>
+    <aside class="right-off-canvas-menu"><ul class="off-canvas-list"><li><label>Menu</label></li><li><a href="#/">HOME</a></li></ul></aside>
+    </div>
+    </div>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    function SearchYouTube(query) {
+    $.ajax({
+        url: 'http://gdata.youtube.com/feeds/mobile/videos?alt=json-in-script&q=' + query,
+        dataType: 'jsonp',
+        success: function (data) {
+            var row = "<table><thead><tr><th width=\"200\">     </th><th>Song Title</th><th width=\"150\">Add to Playlist</th></thead><tbody>";
+            for (i = 0; i < data.feed.entry.length; i++) {
+                //row += "<div class='search_item'>";
+               // row += "<table width='100%'>";
+                row += "<tr>";
+                row += "<td>";
+                row += "<a href='#' ><img width='120px' height='80px' src=" + data.feed.entry[i].media$group.media$thumbnail[0].url + " /></a>";
+                row += "</td>";
+                row += "<td>";
+                row += "<a href='#' ><b>" + data.feed.entry[i].media$group.media$title.$t + "</b></a><br/>";
+                row += "<span style='font-size:12px; color:#555555'>by " + data.feed.entry[i].author[0].name.$t + "</span><br/>";
+                row += "<span style='font-size:12px' color:#666666>" + data.feed.entry[i].yt$statistics.viewCount + " views" + "<span><br/>";
+                row += "</td>";
+                row += "<td>"
+                row += "<a href=\"#\" class=\"button round\">Add to Playlist</a>"
+                row += "</td>"
+                row += "</tr>";
+                //row += "</table>";
+                //row += "</div>";
+
+                console.log(data.feed.entry[i].link[0].href);
+            }
+            row += "</tbody></table>"
+            document.getElementById("search-results-block").innerHTML = row;
+        },
+        error: function () {
+            alert("Error loading youtube video results");
+        }
+    });
+    return false;
+    }
+    </script>
+
+    <div class="search">
+    <input type="text" id="queryinput" placeholder="Enter your search" onkeyup="javascript:SearchYouTube(document.getElementById('queryinput').value)" />
+    <!--<input type="submit" value="Search" 
+    onclick="javascript:SearchYouTube(document.getElementById('queryinput').value)" />-->
+    <div id="search-results-block"></div>
+    </div>
+
+  </body>
+
+  </html>

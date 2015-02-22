@@ -1,0 +1,22 @@
+{
+  "name": "music-app",
+  "version": "1.0.0",
+  "description": "Makes organizing parties easy-peasy",
+  "main": "home.js",
+  "scripts": {
+    "test": "grunt node-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rishabt/McHacks-SocialMusic.git"
+  },
+  "author": "Deepak, Rishabh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rishabt/McHacks-SocialMusic/issues"
+  },
+  "homepage": "https://github.com/rishabt/McHacks-SocialMusic",
+  "dependencies": {
+    "express": "^4.11.2"
+  }
+}
